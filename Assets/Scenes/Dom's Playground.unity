@@ -18942,6 +18942,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ninja_Sand
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: a4ff2cc1f23d8ec4c81dc930b081b281, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 126273740ec8b7d44a338fd54fadcaee, type: 2}
+    - target: {fileID: 1630794972795428178, guid: a4ff2cc1f23d8ec4c81dc930b081b281, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -2274090305892019849, guid: 843f25a1c556b7c4db569a046935ec79, type: 3}
+    - target: {fileID: 1630794972795428178, guid: a4ff2cc1f23d8ec4c81dc930b081b281, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: -3303489080311633890, guid: a4ff2cc1f23d8ec4c81dc930b081b281, type: 3}
+    - target: {fileID: 1630794972795428178, guid: a4ff2cc1f23d8ec4c81dc930b081b281, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: -5243988174349660497, guid: 843f25a1c556b7c4db569a046935ec79, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
