@@ -229,6 +229,9 @@ MonoBehaviour:
   playerSpeed: 15
   rotationSpeed: 720
   animatorPlayer: {fileID: 4484808640281791993}
+  terrainLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &8200119328760250448
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,12 +11,16 @@ public class PlayerPickup : MonoBehaviour
 
     private void Update()
     {
+        // Player presses "E" key to pick up item
+        // Press "E" again to drop item
         if(Input.GetKeyDown(KeyCode.E))
         {
             if (objectGrabbable == null) // If not carrying an object, try to grab
             {
                 if (Physics.Raycast(transform.position, transform.forward, out RaycastHit raycastHit, pickUpDistance))
                 {
+                    // Checks if the object contains the tag "Grabbable" and has ObjectGrabbable component
+                    // Calls Grab() function
                     if (raycastHit.transform.CompareTag("Grabbable") &&
                        raycastHit.transform.TryGetComponent(out objectGrabbable))
                     {
@@ -25,7 +29,7 @@ public class PlayerPickup : MonoBehaviour
                     }
                 }
             }
-            else
+            else // If player is currently carrying an object, drop current object in hand
             {
                 objectGrabbable.Drop();
                 GetComponent<PlayerMovement>().AnimatorPlayer.SetBool("isHolding", false);
