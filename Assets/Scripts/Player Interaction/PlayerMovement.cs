@@ -5,15 +5,20 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float playerSpeed; // Set player speed
+    [SerializeField] private float playerSprint;
     [SerializeField] private float rotationSpeed; // Set player rotation/turn speed
     [SerializeField] private Animator animatorPlayer;
-    [SerializeField] private LayerMask terrainLayer;
 
     private Rigidbody rb;
+    private float initialSpeed;
+
+    private const int ANIM_DOUBLE_SPEED = 2;
+    private const int ANIM_NORMAL_SPEED = 1;
 
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
+        initialSpeed = playerSpeed;
     }
 
     private void Update()
@@ -24,6 +29,18 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveDir = new Vector3(x, 0, y);
         moveDir.Normalize(); // Normalize vector so diagonal movement is not faster than linear movement
         rb.velocity = moveDir * playerSpeed;
+
+        // Sprint mechanic
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            playerSpeed = initialSpeed + playerSprint;
+            animatorPlayer.speed = ANIM_DOUBLE_SPEED;
+        }
+        else
+        {
+            playerSpeed = initialSpeed;
+            animatorPlayer.speed = ANIM_NORMAL_SPEED;
+        }
 
         // Player takes some time to turn instead of turning instantly on input
         if (moveDir != Vector3.zero)
