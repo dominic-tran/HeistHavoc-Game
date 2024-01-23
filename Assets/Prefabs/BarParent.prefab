@@ -1092,7 +1092,7 @@ GameObject:
   - component: {fileID: 5907420533482471261}
   - component: {fileID: 6638031857421456797}
   m_Layer: 0
-  m_Name: BarPile
+  m_Name: BarRadius
   m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1186,7 +1186,7 @@ GameObject:
   - component: {fileID: 8376666597824075855}
   m_Layer: 0
   m_Name: BarParent
-  m_TagString: Untagged
+  m_TagString: Grabbable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
