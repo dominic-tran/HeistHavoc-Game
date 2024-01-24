@@ -5,20 +5,20 @@ using TMPro;
 
 public class ScoringSystem : MonoBehaviour
 {
+    [SerializeField] private AudioSource collectSound;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
-    private int Money = 0;
-    public AudioSource collectSound;
-    public TextMeshProUGUI scoreText;
+    private int money;
 
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if(other.transform.tag == "Gold")
-        {
-            Money++;
-            scoreText.text = "Money: " + Money.ToString();
-            Debug.Log(Money);
-            collectSound.Play();
-            Destroy(other.gameObject);
-        }
+        money = 0;
+    }
+
+    public void AddToScore()
+    {
+        ++money;
+        scoreText.text = "Money: " + money.ToString();
+        collectSound.Play();
     }
 }

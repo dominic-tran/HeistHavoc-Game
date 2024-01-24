@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class DropOffZone : MonoBehaviour
 {
-    // Add code that will work with a Score Manager script in the future
+    private ScoringSystem scoringSystem;
+
+    private void Start()
+    {
+        scoringSystem = GameObject.Find("ScoringSystem").GetComponent<ScoringSystem>();
+    }
 
     // Check if the object was a grabbable object
     // Destroy object if it is placed in the drop-off zone
@@ -13,6 +18,7 @@ public class DropOffZone : MonoBehaviour
         if(other.gameObject.CompareTag("Grabbable"))
         {
             Destroy(other.gameObject);
+            scoringSystem.AddToScore();
         }
     }
 }
