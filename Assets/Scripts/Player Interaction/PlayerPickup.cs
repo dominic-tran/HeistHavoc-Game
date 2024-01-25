@@ -25,14 +25,14 @@ public class PlayerPickup : MonoBehaviour
                        raycastHit.transform.TryGetComponent(out objectGrabbable))
                     {
                         objectGrabbable.Grab(objectGrabPointTransform);
-                        GetComponent<PlayerMovement>().AnimatorPlayer.SetBool("isHolding", true);
+                        GetComponentInParent<PlayerMovement>().AnimatorPlayer.SetBool("isHolding", true);
                     }
                 }
             }
             else // If player is currently carrying an object, drop current object in hand
             {
                 objectGrabbable.Drop();
-                GetComponent<PlayerMovement>().AnimatorPlayer.SetBool("isHolding", false);
+                GetComponentInParent<PlayerMovement>().AnimatorPlayer.SetBool("isHolding", false);
                 objectGrabbable = null;
             }
         }

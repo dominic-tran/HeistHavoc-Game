@@ -20,7 +20,7 @@ public class DropOffZone : MonoBehaviour
         if (other.gameObject.CompareTag("Grabbable"))
         {
             // Obtain the collider's Scriptable Object values through a handler
-            valuable = other.transform.parent.gameObject.GetComponent<ValuablesHandler>().valuables;
+            valuable = other.gameObject.GetComponent<ValuablesHandler>().valuables;
             scoringSystem.AddToScore(valuable.GetValue());
             Destroy(other.gameObject);
         }

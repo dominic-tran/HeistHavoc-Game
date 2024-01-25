@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ValuablesSpawnManager : MonoBehaviour
 {
-    [SerializeField][Range(1,5)] private int numberOfValuables; // Will eventually range from 1-20 valuables
+    [SerializeField][Range(1,9)] private int numberOfValuables; // Will eventually range from 1-20 valuables
     [SerializeField] private List<GameObject> spawnLocations;
     [SerializeField] private SOValuablesDefinition[] valuablesSO;
 

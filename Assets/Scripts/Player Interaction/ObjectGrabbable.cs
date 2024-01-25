@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectGrabbable : MonoBehaviour
 {
-    [SerializeField] private GameObject barObj;
+    [SerializeField] private GameObject valuableObj;
 
     private Rigidbody rb;
     private Transform objectGrabPointTransform;
@@ -13,7 +13,7 @@ public class ObjectGrabbable : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        objectCollider = barObj.GetComponent<Collider>();
+        objectCollider = valuableObj.GetComponent<Collider>();
     }
 
     // Grab() function that moves current object with the player's hands
