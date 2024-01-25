@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float playerSpeed; // Set player speed
-    [SerializeField] private float playerSprint;
+    [SerializeField] private float playerSprint; // Set player speed
     [SerializeField] private float rotationSpeed; // Set player rotation/turn speed
     [SerializeField] private Animator animatorPlayer;
 
     private Rigidbody rb;
     private float initialSpeed;
+    private float weightValue;
 
     private const int ANIM_DOUBLE_SPEED = 2;
     private const int ANIM_NORMAL_SPEED = 1;
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody>();
         initialSpeed = playerSpeed;
+        weightValue = 0;
     }
 
     private void Update()
@@ -33,12 +35,12 @@ public class PlayerMovement : MonoBehaviour
         // Sprint mechanic
         if(Input.GetKey(KeyCode.LeftShift))
         {
-            playerSpeed = initialSpeed + playerSprint;
+            playerSpeed = playerSprint - weightValue;
             animatorPlayer.speed = ANIM_DOUBLE_SPEED;
         }
         else
         {
-            playerSpeed = initialSpeed;
+            playerSpeed = initialSpeed - weightValue;
             animatorPlayer.speed = ANIM_NORMAL_SPEED;
         }
 
@@ -70,6 +72,18 @@ public class PlayerMovement : MonoBehaviour
                 movePos.y = hit.point.y;
                 transform.position = movePos;
             }
+        }
+    }
+
+    public float WeightValue
+    {
+        get
+        {
+            return this.weightValue;
+        }
+        set
+        {
+            weightValue = value;
         }
     }
 

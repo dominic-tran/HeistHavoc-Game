@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2a60f6642e1f2c40a29dcdbd9477a0d, type: 3}
-  m_Name: PInk Vase
+  m_Name: Pink Vase
   m_EditorClassIdentifier: 
   price: 1
-  weight: 0
+  weight: 4
   prefab: {fileID: 3786695293416806994, guid: 55abd069c270de344a31eeb2bc55aad9, type: 3}

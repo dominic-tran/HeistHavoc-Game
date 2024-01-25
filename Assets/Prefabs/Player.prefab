@@ -25,12 +25,58 @@ Transform:
   m_GameObject: {fileID: 1257810777178383409}
   serializedVersion: 2
   m_LocalRotation: {x: -0.620645, y: -0.005178566, z: -0.78383553, w: -0.019364452}
-  m_LocalPosition: {x: 0.00477, y: 0.00028, z: 0.00253}
+  m_LocalPosition: {x: 0.00482, y: 0.00206, z: 0.00248}
   m_LocalScale: {x: 0.009999998, y: 0.009999998, z: 0.010000003}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5731348001814800128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7455278678138685719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7878797960065727666}
+  - component: {fileID: 1597459889727449645}
+  m_Layer: 0
+  m_Name: PlayerPickup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7878797960065727666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7455278678138685719}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3684716986558049848}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1597459889727449645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7455278678138685719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f288317696677b48a3f44fba18a011a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpDistance: 3
+  objectGrabPointTransform: {fileID: 3137506316739590121}
 --- !u!1001 &3794291408452356563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118,6 +164,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: a4ff2cc1f23d8ec4c81dc930b081b281, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7878797960065727666}
     - targetCorrespondingSourceObject: {fileID: -350769177729012013, guid: a4ff2cc1f23d8ec4c81dc930b081b281, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3137506316739590121}
@@ -134,10 +183,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a4ff2cc1f23d8ec4c81dc930b081b281, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2276329182156539075}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a4ff2cc1f23d8ec4c81dc930b081b281, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8200119328760250448}
   m_SourcePrefab: {fileID: 100100000, guid: a4ff2cc1f23d8ec4c81dc930b081b281, type: 3}
+--- !u!4 &3684716986558049848 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a4ff2cc1f23d8ec4c81dc930b081b281, type: 3}
+  m_PrefabInstance: {fileID: 3794291408452356563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4064901356397507714 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a4ff2cc1f23d8ec4c81dc930b081b281, type: 3}
@@ -227,25 +278,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 15
+  playerSprint: 10
   rotationSpeed: 720
   animatorPlayer: {fileID: 4484808640281791993}
-  terrainLayer:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!114 &8200119328760250448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4064901356397507714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f288317696677b48a3f44fba18a011a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickUpDistance: 5
-  objectGrabPointTransform: {fileID: 3137506316739590121}
 --- !u!4 &5731348001814800128 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -350769177729012013, guid: a4ff2cc1f23d8ec4c81dc930b081b281, type: 3}

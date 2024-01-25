@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Bronze Bar
   m_EditorClassIdentifier: 
   price: 2
-  weight: 2
+  weight: 6
   prefab: {fileID: 6126190562643409835, guid: 17754d9df7fcf354297e2b11113056e3, type: 3}

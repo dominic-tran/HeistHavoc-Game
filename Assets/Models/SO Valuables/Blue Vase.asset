@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Blue Vase
   m_EditorClassIdentifier: 
   price: 3
-  weight: 4
+  weight: 8
   prefab: {fileID: 3817895023128176728, guid: 838aa7568e262f94589caa448e933b78, type: 3}

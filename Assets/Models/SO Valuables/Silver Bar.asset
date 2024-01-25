@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Silver Bar
   m_EditorClassIdentifier: 
   price: 3
-  weight: 4
+  weight: 8
   prefab: {fileID: 6126190562643409835, guid: c8e89aa5ff2d3e24ebe5b9ba431f984e, type: 3}

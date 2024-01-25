@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Gold Bar
   m_EditorClassIdentifier: 
   price: 4
-  weight: 6
+  weight: 10
   prefab: {fileID: 6126190562643409835, guid: cb424da811bb356468f68a22f47805e5, type: 3}

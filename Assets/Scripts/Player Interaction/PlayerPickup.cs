@@ -8,6 +8,12 @@ public class PlayerPickup : MonoBehaviour
     [SerializeField] private Transform objectGrabPointTransform;
 
     private ObjectGrabbable objectGrabbable;
+    private PlayerMovement player;
+
+    private void Start()
+    {
+        player = this.transform.parent.GetComponent<PlayerMovement>();
+    }
 
     private void Update()
     {
@@ -24,6 +30,9 @@ public class PlayerPickup : MonoBehaviour
                     if (raycastHit.transform.CompareTag("Grabbable") &&
                        raycastHit.transform.TryGetComponent(out objectGrabbable))
                     {
+                        // Updates weight value on player
+                        player.WeightValue = objectGrabbable.GetComponent<ValuablesHandler>().valuables.GetWeight();
+
                         objectGrabbable.Grab(objectGrabPointTransform);
                         GetComponentInParent<PlayerMovement>().AnimatorPlayer.SetBool("isHolding", true);
                     }
@@ -31,6 +40,7 @@ public class PlayerPickup : MonoBehaviour
             }
             else // If player is currently carrying an object, drop current object in hand
             {
+                player.WeightValue = 0;
                 objectGrabbable.Drop();
                 GetComponentInParent<PlayerMovement>().AnimatorPlayer.SetBool("isHolding", false);
                 objectGrabbable = null;

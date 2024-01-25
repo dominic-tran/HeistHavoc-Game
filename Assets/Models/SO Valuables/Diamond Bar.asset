@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Diamond Bar
   m_EditorClassIdentifier: 
   price: 5
-  weight: 8
+  weight: 12
   prefab: {fileID: 6126190562643409835, guid: bd6fc8f74cf44d84c981fb3869080648, type: 3}

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Iron Bar
   m_EditorClassIdentifier: 
   price: 1
-  weight: 0
+  weight: 4
   prefab: {fileID: 6126190562643409835, guid: d4a92727faeeeb4498d422516c3fe6fe, type: 3}

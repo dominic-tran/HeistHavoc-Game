@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Yellow Vase
   m_EditorClassIdentifier: 
   price: 2
-  weight: 2
+  weight: 6
   prefab: {fileID: 4071930686336742248, guid: 9ee23e6c977726441a34d0f14d354f6d, type: 3}
