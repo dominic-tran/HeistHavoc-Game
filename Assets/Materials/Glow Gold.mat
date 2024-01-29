@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Glow Gold
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 2100000, guid: c9c9e9abc2341794690b7a16feab41ce, type: 2}
+  m_Parent: {fileID: 2100000, guid: 17577bb4009833540894d186f031ca95, type: 2}
   m_ModifiedSerializedProperties: 2
   m_ValidKeywords:
   - _EMISSION

@@ -9,6 +9,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed; // Set player rotation/turn speed
     [SerializeField] private Animator animatorPlayer;
 
+    public float PlayerSpeed
+    {
+        get { return playerSpeed; }
+        set { playerSpeed = value; }
+    }
+
     private Rigidbody rb;
     private float initialSpeed;
     private float weightValue;
