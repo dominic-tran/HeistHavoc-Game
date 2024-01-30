@@ -7,16 +7,24 @@ public class PlayerPickup : MonoBehaviour
     [SerializeField] private float pickUpDistance;
     [SerializeField] private Transform objectGrabPointTransform;
 
+    public bool isDetected;
+
     private ObjectGrabbable objectGrabbable;
     private PlayerMovement player;
 
     private void Start()
     {
         player = this.transform.parent.GetComponent<PlayerMovement>();
+        isDetected = false;
     }
 
     private void Update()
     {
+        if(isDetected)
+        {
+            isDetected = false;
+            DropObject();
+        }
         // Player presses "E" key to pick up item
         // Press "E" again to drop item
         if(Input.GetKeyDown(KeyCode.E))
@@ -40,11 +48,16 @@ public class PlayerPickup : MonoBehaviour
             }
             else // If player is currently carrying an object, drop current object in hand
             {
-                player.WeightValue = 0;
-                objectGrabbable.Drop();
-                GetComponentInParent<PlayerMovement>().AnimatorPlayer.SetBool("isHolding", false);
-                objectGrabbable = null;
+                DropObject();
             }
         }
+    }
+
+    private void DropObject()
+    {
+        player.WeightValue = 0;
+        objectGrabbable.Drop();
+        GetComponentInParent<PlayerMovement>().AnimatorPlayer.SetBool("isHolding", false);
+        objectGrabbable = null;
     }
 }
