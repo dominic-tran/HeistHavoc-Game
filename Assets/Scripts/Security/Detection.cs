@@ -40,8 +40,10 @@ public class Detection : MonoBehaviour
 
                 if (hit.collider.gameObject.tag == playerTag)
                 {
-                    playerDrop = collision.gameObject.GetComponent<PlayerPickup>();
-                    playerDrop.isDetected = true;
+                    //PlayerMovement playerMovementInstance = GetComponent<PlayerMovement>();
+                    //playerMovementInstance.PlayerSpeed = 0;
+                    //playerDrop = collision.gameObject.GetComponent<PlayerPickup>();
+                    //playerDrop.isDetected = true;
                     Invoke("Respawn", 2f);
                 }
             }
