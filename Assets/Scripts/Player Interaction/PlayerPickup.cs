@@ -7,24 +7,21 @@ public class PlayerPickup : MonoBehaviour
     [SerializeField] private float pickUpDistance;
     [SerializeField] private Transform objectGrabPointTransform;
 
-    public bool isDetected;
-
     private ObjectGrabbable objectGrabbable;
     private PlayerMovement player;
 
     private void Start()
     {
         player = this.transform.parent.GetComponent<PlayerMovement>();
-        isDetected = false;
     }
 
     private void Update()
     {
-        if(isDetected)
+        if(player.isFrozen && objectGrabbable != null)
         {
-            isDetected = false;
             DropObject();
         }
+
         // Player presses "E" key to pick up item
         // Press "E" again to drop item
         if(Input.GetKeyDown(KeyCode.E))
@@ -40,7 +37,7 @@ public class PlayerPickup : MonoBehaviour
                     {
                         // Updates weight value on player
                         player.WeightValue = objectGrabbable.GetComponent<ValuablesHandler>().valuables.GetWeight();
-
+                        objectGrabbable.gameObject.tag = "Grabbed";
                         objectGrabbable.Grab(objectGrabPointTransform);
                         GetComponentInParent<PlayerMovement>().AnimatorPlayer.SetBool("isHolding", true);
                     }
@@ -53,9 +50,10 @@ public class PlayerPickup : MonoBehaviour
         }
     }
 
-    private void DropObject()
+    public void DropObject()
     {
         player.WeightValue = 0;
+        objectGrabbable.gameObject.tag = "Grabbable";
         objectGrabbable.Drop();
         GetComponentInParent<PlayerMovement>().AnimatorPlayer.SetBool("isHolding", false);
         objectGrabbable = null;
