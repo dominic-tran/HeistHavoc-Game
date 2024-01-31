@@ -28,8 +28,6 @@ public class DropOffZone : MonoBehaviour
             valuable = other.gameObject.GetComponent<ValuablesHandler>().valuables;
             //Executes Value Increment Animation
             scoringSystem.IncreaseMoney(valuable.GetValue());
-            //Finalizes Value by rounding the Float value to two decimal points
-            scoringSystem.FinalDisplay();
             //Instantiates a Text Mesh Pro object to display Increment animation
             ShowFloatingText();
             Destroy(other.gameObject);

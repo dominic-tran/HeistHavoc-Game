@@ -40,26 +40,28 @@ public class ScoringSystem : MonoBehaviour
             AddToScore();
             
             //If player reaches a certain monetary value the game ends basically
-            if(currentMoney >= 100)
+            if(currentMoney >= 15)
             {
-                currentMoney = 100;
+                GameStateManager.Win();
                 break;
             }
             yield return null;
             
 
         }
+
+        FinalDisplay();
     }
     //Utilized to increment decimals every frame of the elapsed time
     void AddToScore()
     {
-        scoreText.text = "Value Stolen: " + currentMoney.ToString("#.##");   
+        scoreText.text = "Value Stolen: $" + currentMoney.ToString("#.##");
     }
     // Final Display is used to fix the precision point error that floats have 
     public void FinalDisplay()
     {
-        currentMoney = Mathf.Round(currentMoney * 100) / 100;
-        scoreText.text = "Value Stolen: " + currentMoney.ToString("#.##");
+        int roundedMoneyValue = (int)Mathf.Round(currentMoney);
+        scoreText.text = "Value Stolen: $" + roundedMoneyValue.ToString("#");
     }
 
 }

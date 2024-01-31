@@ -12,7 +12,7 @@ public abstract class Security : MonoBehaviour
         player = GameObject.FindWithTag("Player");
     }
 
-    void OnTriggerStay(Collider collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Player"))
         {
