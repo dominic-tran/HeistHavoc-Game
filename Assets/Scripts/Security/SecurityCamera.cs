@@ -3,47 +3,66 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Security Camera will use inheritance
-public class SecurityCamera
+public class SecurityCamera : Security
 {
-    protected float turnSpeed;
-    protected float turnAngle;
-    protected float detectionDiameter;
+    [SerializeField] GameObject cameraSwivel;
+    [SerializeField] private float secondsToRotate;
+    [SerializeField] private float degree;
+    [SerializeField] private float rotateSwitchTime;
+    [SerializeField] private bool rotateRight;
 
-    public SecurityCamera()
+    private bool startNextRotation;
+
+    public override void Start()
     {
-        turnSpeed = 0;
-        turnAngle = 0;
-        detectionDiameter = 0;
+        base.Start();
+        startNextRotation = true;
+
+        if (rotateRight)
+        {
+            cameraSwivel.transform.localRotation = Quaternion.AngleAxis(-degree / 2, Vector3.up);
+        }
+        else
+        {
+            cameraSwivel.transform.localRotation = Quaternion.AngleAxis(degree / 2, Vector3.up);
+        }
+    }
+    private void Update()
+    {
+        Move();
     }
 
-    public float getTurnSpeed()
+    public override void Move()
     {
-        return turnSpeed;
+        if (startNextRotation && rotateRight)
+        {
+            StartCoroutine(Rotate(degree, secondsToRotate));
+        }
+        else if (startNextRotation && !rotateRight)
+        {
+            StartCoroutine(Rotate(-degree, secondsToRotate));
+        }
     }
 
-    public float getTurnAngle()
+    private IEnumerator Rotate(float degree, float duration)
     {
-        return turnAngle;
-    }
+        startNextRotation = false;
 
-    public float getDetectionDiameter()
-    {
-        return detectionDiameter;
-    }
+        Quaternion initialRotation = cameraSwivel.transform.rotation;
 
-    public void setTurnSpeed(float newTurnSpeed)
-    {
-        turnSpeed = newTurnSpeed;
-    }
+        float timer = 0f;
 
-    public void setTurnAngle(float newTurnAngle)
-    {
-        turnAngle = newTurnAngle;
-    }
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            cameraSwivel.transform.rotation = initialRotation * Quaternion.AngleAxis(timer / duration * degree, Vector3.up);
+            yield return null;
+        }
 
-    public void setDetectionDiameter(float newDetectionDiameter)
-    {
-        detectionDiameter = newDetectionDiameter;
+        yield return new WaitForSeconds(rotateSwitchTime);
+
+        startNextRotation = true;
+        rotateRight = !rotateRight;
     }
 
 }
