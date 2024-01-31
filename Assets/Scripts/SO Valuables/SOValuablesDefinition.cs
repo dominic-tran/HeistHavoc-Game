@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Heist Havoc/Valuables Definition")]
-public class SOValuablesDefinition : ScriptableObject
+public class SOValuablesDefinition : ScriptableObject, IValuables
 {
     [SerializeField] private float price;
     [SerializeField] private float weight;
