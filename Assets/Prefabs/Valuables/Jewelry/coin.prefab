@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 23105300045193530}
   - component: {fileID: 8542149118613733214}
   - component: {fileID: 8804443041308433304}
-  - component: {fileID: 6131881131099965451}
   - component: {fileID: 4893026627711712214}
+  - component: {fileID: 5090287514528285809}
   m_Layer: 0
   m_Name: coin
   m_TagString: Grabbable
@@ -33,7 +33,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 547498297495175570}
   m_Father: {fileID: 0}
@@ -134,21 +134,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 2.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6131881131099965451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1639909534220598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71e9cad19ac53144bb0d3f102494f973, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  valuables: {fileID: 11400000, guid: bf26b4befa2d2154eb6abc757fe80eaa, type: 2}
 --- !u!114 &4893026627711712214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +149,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valuableObj: {fileID: 4966867066234216314}
+--- !u!114 &5090287514528285809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639909534220598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e9cad19ac53144bb0d3f102494f973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valuables: {fileID: 11400000, guid: bf26b4befa2d2154eb6abc757fe80eaa, type: 2}
+  floatingValuePrefab: {fileID: 5435680967206279906, guid: 9aa4cadaa0eb1514fb5daf69f445ba6e, type: 3}
 --- !u!1 &4966867066234216314
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,10 +188,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4966867066234216314}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4486814125003868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

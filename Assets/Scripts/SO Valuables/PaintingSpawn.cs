@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contributors: Nick
 public class PaintingSpawn : ISpawn
 {
     [SerializeField] [Range(1, 3)] private int numberOfValuables; // Limits how many variables will spawn

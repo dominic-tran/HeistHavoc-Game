@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+// Contributors: Dominic
 public abstract class ISpawn : MonoBehaviour
 {
     protected int _numberOfValuables; // Limits how many variables will spawn

@@ -32,6 +32,7 @@ public class GameStateManager : MonoBehaviour
     public static void Win()
     {
         GameObject winMenu = GameObject.Find("WinCanvas").transform.GetChild(0).gameObject;
+        Time.timeScale = 0f;
         winMenu.SetActive(true);
     }
 

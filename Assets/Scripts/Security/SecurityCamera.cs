@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Security Camera will use inheritance
+
+// Contributors: Nick, Dominic
 public class SecurityCamera : Security
 {
     [SerializeField] GameObject cameraSwivel;

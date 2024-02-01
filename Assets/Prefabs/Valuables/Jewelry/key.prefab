@@ -134,7 +134,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.28
+  m_Radius: 2.5
   m_Center: {x: 0, y: -0.042658806, z: 0.0020782948}
 --- !u!114 &3512217616475324440
 MonoBehaviour:
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valuables: {fileID: 11400000, guid: 55d7b929be62e3e4fbcc7cb8891fe04b, type: 2}
+  floatingValuePrefab: {fileID: 5435680967206279906, guid: 9aa4cadaa0eb1514fb5daf69f445ba6e, type: 3}
 --- !u!114 &579490658803809543
 MonoBehaviour:
   m_ObjectHideFlags: 0

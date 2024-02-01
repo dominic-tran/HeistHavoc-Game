@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contributors: Dominic, Nick
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float playerSpeed; // Set player speed

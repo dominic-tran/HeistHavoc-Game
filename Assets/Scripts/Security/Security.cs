@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contributors: Dominic
 public abstract class Security : MonoBehaviour
 {
     private GameObject player;

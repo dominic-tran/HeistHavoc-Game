@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contributors: Adrian, Jacky
 public class FloatingValueText : MonoBehaviour
 {
     Transform mainCam;
@@ -14,11 +15,6 @@ public class FloatingValueText : MonoBehaviour
     {
         mainCam = Camera.main.transform;
         unit = transform.parent;
-        worldSpaceCanvas = GameObject.FindGameObjectWithTag("Float Canvas").transform;
-
-        transform.SetParent(worldSpaceCanvas);
-
-
     }
 
     // Update is called once per frame

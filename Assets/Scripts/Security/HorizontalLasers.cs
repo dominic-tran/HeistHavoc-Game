@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Security Camera will use inheritance
+// Contributors: Adrian
 public class HorizontalLasers : Security
 {
     // Start is called before the first frame update

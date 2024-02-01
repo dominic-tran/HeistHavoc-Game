@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+// Contributors: Nick, Dominic, Adrian, Jacky
 public class DropOffZone : MonoBehaviour
 {
     private ScoringSystem scoringSystem;

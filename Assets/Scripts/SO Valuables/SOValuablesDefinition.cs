@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contributors: Dominic, Adrian, Nick, Jacky
 [CreateAssetMenu(menuName = "Heist Havoc/Valuables Definition")]
 public class SOValuablesDefinition : ScriptableObject, IValuables
 {

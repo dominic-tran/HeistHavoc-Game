@@ -5,7 +5,7 @@ using TMPro;
 
 
 
-
+// Contributors: Dominic, Nick, Adrian, Jacky
 public class ValuablesHandler : MonoBehaviour
 {
     public SOValuablesDefinition valuables;
@@ -15,7 +15,6 @@ public class ValuablesHandler : MonoBehaviour
 
     public void Start()
     {
-
         ShowFloatingValue();
     }
 
@@ -32,8 +31,9 @@ public class ValuablesHandler : MonoBehaviour
     void ShowFloatingValue()
     {
         value = valuables.GetValue();
+
         //Creates a text and grabs the value of the object to display in the text 
-        var fly = Instantiate(floatingValuePrefab, transform.position,Quaternion.identity, transform);
+        var fly = Instantiate(floatingValuePrefab, transform.position, Quaternion.identity, transform);
         fly.GetComponentInChildren<TextMeshProUGUI>().text = "$" + value.ToString();
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contributors: Jacky
 public class JewelrySpawn : ISpawn
 {
     [SerializeField] [Range(1, 10)] private int numberOfValuables; // Limits how many variables will spawn

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contributors: Dominic, Nick
 public class ObjectGrabbable : MonoBehaviour
 {
     [SerializeField] private GameObject valuableObj;

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contributors: Adrian
 public class BarSpawn : ISpawn
 {
     [SerializeField] [Range(1, 11)] private int numberOfValuables; // Limits how many variables will spawn

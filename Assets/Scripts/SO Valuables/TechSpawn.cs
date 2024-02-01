@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contributors: Dominic
 public class TechSpawn : ISpawn
 {
     [SerializeField] [Range(1, 4)] private int numberOfValuables; // Limits how many variables will spawn

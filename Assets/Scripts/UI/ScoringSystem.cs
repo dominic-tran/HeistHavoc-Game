@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+// Contributors: Adrian, Jacky, Nick, Dominic
 public class ScoringSystem : MonoBehaviour, IScoreObserver
 {
     
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private float smoothIncreaseDuration = 0.5f;
-    [SerializeField] private DropOffZone scoreSubject;
 
     private float currentMoney;
 
@@ -18,7 +18,6 @@ public class ScoringSystem : MonoBehaviour, IScoreObserver
     private void Start()
     {
         currentMoney = 0;
-        scoreSubject.AddObserver(this);
         AddToScore();
     }
     

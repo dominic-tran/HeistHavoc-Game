@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contributors: Dominic, Nick
 public class PlayerPickup : MonoBehaviour
 {
     [SerializeField] private float pickUpDistance;

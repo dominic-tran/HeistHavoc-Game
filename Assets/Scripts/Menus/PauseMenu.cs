@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Contributors: Jacky, Adrian
 public class PauseMenu : Buttons
 {
     [SerializeField] private GameObject pauseMenu;

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+//// Contributors: Jacky, Adrian
 public class VerticalLasers : Security
 {
 
