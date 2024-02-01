@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IValuables
 {
-    GameObject Spawn(Vector3 position);
+    GameObject Spawn(Vector3 position, Quaternion rotation);
     float GetValue();
     float GetWeight();
     GameObject GetPrefab();
