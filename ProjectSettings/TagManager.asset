@@ -8,6 +8,7 @@ TagManager:
   - Gold
   - Detection
   - Grabbed
+  - Float Canvas
   layers:
   - Default
   - TransparentFX

@@ -1189,6 +1189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valuables: {fileID: 11400000, guid: f55eb43f352d3894e8522e5050780dbd, type: 2}
+  floatingValuePrefab: {fileID: 1328669134473024389, guid: 7321f5e730238414fb38ede389e19e21, type: 3}
 --- !u!1 &6126190562643409835
 GameObject:
   m_ObjectHideFlags: 0

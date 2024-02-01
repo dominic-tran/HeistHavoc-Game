@@ -215,3 +215,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valuables: {fileID: 11400000, guid: 6126ca825b2e70f448f880d15f8dcd90, type: 2}
+  floatingValuePrefab: {fileID: 5435680967206279906, guid: 9aa4cadaa0eb1514fb5daf69f445ba6e, type: 3}

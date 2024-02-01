@@ -43,7 +43,7 @@ public class DropOffZone : MonoBehaviour
     {
         value = valuable.GetValue();
         //Creates a text and grabs the value of the object to display in the text 
-        var go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+        var go = Instantiate(floatingTextPrefab);
         go.GetComponentInChildren<TextMeshProUGUI>().text = "+" + value.ToString();
     }
 
