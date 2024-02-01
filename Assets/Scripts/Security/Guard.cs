@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Guard : Security
 {
@@ -12,7 +13,9 @@ public class Guard : Security
     [SerializeField] private float minStop;
     [SerializeField] private float maxStop;
     private List<Quaternion> angles = new List<Quaternion>();
-    
+    private int randomN;
+    private Quaternion temp;
+
     public override void Start()
     {
         base.Start();
@@ -40,6 +43,7 @@ public class Guard : Security
         {
             angles.Add(turnUp);
         }
+        randomN = Random.Range(0, angles.Count);
         StartCoroutine(RandomRotationCoroutine());
     }
     IEnumerator RandomRotationCoroutine()
@@ -56,7 +60,12 @@ public class Guard : Security
     public override void Move()
     {
         {
-            securityGuard.transform.rotation = angles[Random.Range(0, angles.Count - 1)];
+            Debug.Log(randomN);
+            securityGuard.transform.rotation = angles[randomN];
+            temp = angles[randomN];
+            angles.RemoveAt(randomN);
+            randomN = Random.Range(0, angles.Count);
+            angles.Add(temp);
         }
     }
 }
