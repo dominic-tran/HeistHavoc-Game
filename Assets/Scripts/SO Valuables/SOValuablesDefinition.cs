@@ -9,9 +9,9 @@ public class SOValuablesDefinition : ScriptableObject, IValuables
     [SerializeField] private float weight;
     [SerializeField] private GameObject prefab;
 
-    public GameObject Spawn(Vector3 position)
+    public GameObject Spawn(Vector3 position, Quaternion rotation)
     {
-        GameObject instance = GameObject.Instantiate(prefab, position, Quaternion.identity);
+        GameObject instance = GameObject.Instantiate(prefab, position, rotation);
         
         return instance;
     }
