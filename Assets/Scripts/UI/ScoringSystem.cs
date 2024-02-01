@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ScoringSystem : MonoBehaviour
+public class ScoringSystem : MonoBehaviour, IScoreObserver
 {
     
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private float smoothIncreaseDuration = 0.5f;
+    [SerializeField] private DropOffZone scoreSubject;
 
     private float currentMoney;
 
@@ -17,6 +18,7 @@ public class ScoringSystem : MonoBehaviour
     private void Start()
     {
         currentMoney = 0;
+        scoreSubject.AddObserver(this);
         AddToScore();
     }
     
@@ -53,7 +55,7 @@ public class ScoringSystem : MonoBehaviour
         FinalDisplay();
     }
     //Utilized to increment decimals every frame of the elapsed time
-    void AddToScore()
+    public void AddToScore()
     {
         scoreText.text = "Value Stolen: $" + currentMoney.ToString("#.##");
     }
