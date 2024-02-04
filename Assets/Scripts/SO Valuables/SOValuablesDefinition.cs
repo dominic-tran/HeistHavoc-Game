@@ -8,7 +8,7 @@ public class SOValuablesDefinition : ScriptableObject, IValuables
 {
     [SerializeField] private float price;
     [SerializeField] private float weight;
-    [SerializeField] private GameObject prefab;
+    [SerializeField] public GameObject prefab;
 
     public GameObject Spawn(Vector3 position, Quaternion rotation)
     {
