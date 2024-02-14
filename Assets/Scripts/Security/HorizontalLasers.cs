@@ -6,8 +6,8 @@ using UnityEngine;
 public class HorizontalLasers : Security
 {
     // Start is called before the first frame update
-    public float moveDistance = 5f;   // Set the distance the object moves up and down
-    public float moveSpeed = 1f;      // Set the speed of the movement
+    [SerializeField] private float moveDistance = 5f;   // Set the distance the object moves up and down
+    [SerializeField] private float moveSpeed = 1f;      // Set the speed of the movement
 
     private float initialY;           // Store the initial Y position for reference
 

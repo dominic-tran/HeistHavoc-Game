@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ItemUIButtons : MonoBehaviour
 {
-    public SOValuablesDefinition buttonData;
+    [SerializeField] private SOValuablesDefinition buttonData;
     private Button buttonComponent;
     private static List<GameObject> spawnedObjects = new List<GameObject>();
 
