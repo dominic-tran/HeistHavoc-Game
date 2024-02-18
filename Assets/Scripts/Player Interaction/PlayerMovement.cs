@@ -5,19 +5,29 @@ using UnityEngine;
 // Contributors: Dominic, Nick
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Player Movement")]
     [SerializeField] private float playerSpeed; // Set player speed
     [SerializeField] private float playerSprint; // Set player speed
     [SerializeField] private float rotationSpeed; // Set player rotation/turn speed
+
+    [Header("Player Input")]
+    [SerializeField] private string inputHorizontal;
+    [SerializeField] private string inputVertical;
+    [SerializeField] private string inputSprint;
+
+    [Header("Misc.")]
+    [SerializeField] private Color playerColor;
     [SerializeField] private Animator animatorPlayer;
 
     private Rigidbody rb;
+    private Renderer bodyColor;
     private float initialSpeed;
     private float weightValue;
 
     private const int ANIM_DOUBLE_SPEED = 2;
     private const int ANIM_NORMAL_SPEED = 1;
 
-    public bool isFrozen;
+    [HideInInspector] public bool isFrozen;
 
     private void Start()
     {
@@ -25,21 +35,25 @@ public class PlayerMovement : MonoBehaviour
         initialSpeed = playerSpeed;
         weightValue = 0;
         isFrozen = false;
+
+        // Change color of player
+        bodyColor = gameObject.transform.GetChild(0).GetComponent<Renderer>();
+        bodyColor.material.color = playerColor;
     }
 
     private void Update()
     {
         if(!isFrozen)
         {
-            float x = Input.GetAxis("Horizontal");
-            float y = Input.GetAxis("Vertical");
+            float x = Input.GetAxis(inputHorizontal);
+            float y = Input.GetAxis(inputVertical);
 
             Vector3 moveDir = new Vector3(x, 0, y);
             moveDir.Normalize(); // Normalize vector so diagonal movement is not faster than linear movement
             rb.velocity = moveDir * playerSpeed;
 
             // Sprint mechanic
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(inputSprint))
             {
                 playerSpeed = playerSprint - weightValue;
                 animatorPlayer.speed = ANIM_DOUBLE_SPEED;

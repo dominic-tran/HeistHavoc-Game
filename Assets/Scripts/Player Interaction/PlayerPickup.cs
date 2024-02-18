@@ -7,6 +7,7 @@ public class PlayerPickup : MonoBehaviour
 {
     [SerializeField] private float pickUpDistance;
     [SerializeField] private Transform objectGrabPointTransform;
+    [SerializeField] private string inputPickup;
 
     private ObjectGrabbable objectGrabbable;
     private PlayerMovement player;
@@ -25,7 +26,7 @@ public class PlayerPickup : MonoBehaviour
 
         // Player presses "E" key to pick up item
         // Press "E" again to drop item
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(inputPickup))
         {
             if (objectGrabbable == null) // If not carrying an object, try to grab
             {

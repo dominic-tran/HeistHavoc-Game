@@ -280,7 +280,11 @@ MonoBehaviour:
   playerSpeed: 15
   playerSprint: 10
   rotationSpeed: 720
+  inputHorizontal: 
+  inputVertical: 
+  playerColor: {r: 1, g: 0, b: 0, a: 1}
   animatorPlayer: {fileID: 4484808640281791993}
+  isFrozen: 0
 --- !u!4 &5731348001814800128 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -350769177729012013, guid: a4ff2cc1f23d8ec4c81dc930b081b281, type: 3}

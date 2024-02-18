@@ -10,15 +10,16 @@ public abstract class Security : MonoBehaviour
 
     public virtual void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        
     }
 
     void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Player"))
         {
+            player = collision.gameObject;
             collision.enabled = false;
-            player.GetComponent<PlayerMovement>().isFrozen = true;
+            collision.GetComponent<PlayerMovement>().isFrozen = true;
             Invoke("Respawn", CAUGHT_TIME);
         }
     }
