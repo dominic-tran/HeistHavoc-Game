@@ -9,6 +9,7 @@ TagManager:
   - Detection
   - Grabbed
   - Float Canvas
+  - Collide
   layers:
   - Default
   - TransparentFX
