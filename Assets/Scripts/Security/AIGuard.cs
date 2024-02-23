@@ -5,13 +5,23 @@ using UnityEngine.AI;
 
 public class AIGuard : Security
 {
-    [SerializeField] private Transform followPlayer;
+    [HideInInspector] public Transform followPlayer;
+    [HideInInspector] public bool playerInRange;
 
     private Animator animatorPlayer;
     private NavMeshAgent agent;
+    private float timeElapsed;
 
-    private float x;
-    private float y;
+    // Patrol variables
+    [Header("Patrol Variables")]
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private float walkingRange;
+    private Vector3 destPoint;
+    private bool walkpointSet;
+    private bool willWalk;
+
+    private const float MAX_CHASE_TIME = 10f;
+    private const float MAX_WALK_DISTANCE = 5f;
 
     // Start is called before the first frame update
     public override void Start()
@@ -20,14 +30,71 @@ public class AIGuard : Security
         Move();
         agent = GetComponent<NavMeshAgent>();
         animatorPlayer = GetComponent<Animator>();
+        willWalk = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.destination = followPlayer.position;
-        
+        // STATE 1: Follows player if the player is in range of the guard
+        if (playerInRange)
+        {
+            agent.destination = followPlayer.position;
+            timeElapsed += Time.deltaTime;
+
+            willWalk = false;
+            // STATE 2: Chase ends after 10 seconds if not caught
+            if (timeElapsed >= MAX_CHASE_TIME)
+            {
+                timeElapsed = 0;
+                playerInRange = false;
+                agent.isStopped = true;
+                // STATE 3: Guard is idle/walking around
+                Invoke("WillWalk", 5f);
+            }
+        }
+
+        if(willWalk)
+        {
+            Walking();
+        }
+
         KeepGrounded();
+    }
+
+    private void WillWalk()
+    {
+        willWalk = true;
+        agent.isStopped = false;
+    }
+    private void Walking()
+    {
+        if(walkpointSet)
+        {
+            agent.SetDestination(destPoint);
+        }
+        else
+        {
+            SearchForDest();
+        }
+
+        if(Vector3.Distance(transform.position, destPoint) < MAX_WALK_DISTANCE)
+        {
+            walkpointSet = false;
+        }
+    }
+
+    private void SearchForDest()
+    {
+        float z = Random.Range(-walkingRange, walkingRange);
+        float x = Random.Range(-walkingRange, walkingRange);
+
+        destPoint = new Vector3(transform.position.x + x, transform.position.y, transform.position.z + z);
+
+        if(Physics.Raycast(destPoint, Vector3.down, groundMask))
+        {
+            walkpointSet = true;
+        }
     }
 
     public override void Move()
@@ -35,19 +102,25 @@ public class AIGuard : Security
         StartCoroutine(IsMoving());
     }
 
+    // Responsible for handling moving animation of the security guard
     IEnumerator IsMoving()
     {
-        Vector3 prevPos = transform.position;
-        yield return new WaitForSeconds(Time.deltaTime);
-        Vector3 currPos = transform.position;
+        while (true)
+        {
+            Vector3 prevPos = transform.position;
+            Debug.Log("prevPos: " + prevPos);
+            yield return new WaitForSeconds(Time.deltaTime);
+            Vector3 currPos = transform.position;
+            Debug.Log("currPos: " + currPos);
 
-        if( prevPos == currPos )
-        {
-            animatorPlayer.SetBool("Moving", true);
-        }
-        else
-        {
-            animatorPlayer.SetBool("Moving", false);
+            if (prevPos == currPos)
+            {
+                animatorPlayer.SetBool("Moving", false);
+            }
+            else
+            {
+                animatorPlayer.SetBool("Moving", true);
+            }
         }
     }
     private void KeepGrounded()
