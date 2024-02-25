@@ -16,6 +16,7 @@ public class AIGuard : Security
     [Header("Patrol Variables")]
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float walkingRange;
+    [SerializeField] private float fatigueTime;
     private Vector3 destPoint;
     private bool walkpointSet;
     private bool willWalk;
@@ -50,7 +51,7 @@ public class AIGuard : Security
                 playerInRange = false;
                 agent.isStopped = true;
                 // STATE 3: Guard is idle/walking around
-                Invoke("WillWalk", 5f);
+                Invoke("WillWalk", fatigueTime);
             }
         }
 
