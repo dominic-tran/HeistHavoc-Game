@@ -10,7 +10,7 @@ public abstract class Security : MonoBehaviour
 
     public virtual void Start()
     {
-        
+
     }
 
     void OnTriggerEnter(Collider collision)

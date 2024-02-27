@@ -109,10 +109,8 @@ public class AIGuard : Security
         while (true)
         {
             Vector3 prevPos = transform.position;
-            Debug.Log("prevPos: " + prevPos);
             yield return new WaitForSeconds(Time.deltaTime);
             Vector3 currPos = transform.position;
-            Debug.Log("currPos: " + currPos);
 
             if (prevPos == currPos)
             {
