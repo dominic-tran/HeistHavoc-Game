@@ -19,9 +19,8 @@ public class Roomba : Security
     }
     public override void Move()
     {
-
-        //rotates roomba
-        //roomba.transform.Rotate(new Vector3(0, 0, degreesPerSecond) * Time.deltaTime);
+        //roomba.transform.Rotate(new Vector3(0, 0, degreesPerSecond) * Time.deltaTime); //rotates roomba
         roomba.transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+        //if ()
     }
 }
