@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Timeline;
 
+// Contributors: Nick, Jacky
 public class Roomba : Security
 {
     [SerializeField] GameObject roomba;
@@ -19,6 +20,7 @@ public class Roomba : Security
     private float originalMoveSpeed;
     private float time;
 
+    // Constant float values for Roomba rotation values
     private const float MIN_ROTATE_DEGREES = 90f;
     private const float MAX_ROTATE_DEGREES = 180f;
     private const float DEGREES_PER_SEC = 20f;
@@ -27,6 +29,7 @@ public class Roomba : Security
     public override void Start()
     {
         base.Start();
+        // Ignores collision with the floor
         Physics.IgnoreCollision(ground.GetComponent<Collider>(), this.GetComponent<Collider>());
         hitObject = false;
         playerDetected = false;
@@ -53,6 +56,7 @@ public class Roomba : Security
         }
         else
         {
+            // If no player detected
             time = 0f;
             moveSpeed = originalMoveSpeed;
             roomba.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.black;
@@ -80,17 +84,20 @@ public class Roomba : Security
         }
         else
         {
+            // Resets values after Roomba completes rotation
             totalDegreesTurned = 0f;
             rotateNegative = true;
             hitObject = false;
         }
     }
 
+    // Handles Roomba moving forward
     private void ForwardMovement()
     {
         roomba.transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
     }
 
+    // Handles Roomba rotating left
     private void RotateLeft()
     {
         if(playerDetected)
@@ -103,6 +110,7 @@ public class Roomba : Security
         }
     }
 
+    // Handles Roomba rotating right
     private void RotateRight()
     {
         if (playerDetected)
@@ -115,6 +123,7 @@ public class Roomba : Security
         }
     }
 
+    // Calculates the total time elapsed while Roomba is rotating
     private void TotalTime()
     {
         if (playerDetected)
@@ -127,6 +136,7 @@ public class Roomba : Security
         }
     }
 
+    // Checks if Roomba collides with any object in front of it
     private void OnCollisionEnter(Collision collision)
     {
         rotateDegrees = Random.Range(MIN_ROTATE_DEGREES, MAX_ROTATE_DEGREES);

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
+// Contributors: Dominic, Adrian, Nick, Jacky
 public class GameStateManager : MonoBehaviour
 {
     [SerializeField] private GameObject winMenu;
