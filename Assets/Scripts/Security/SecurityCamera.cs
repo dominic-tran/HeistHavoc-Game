@@ -19,6 +19,7 @@ public class SecurityCamera : Security
         base.Start();
         startNextRotation = true;
 
+        // Starts camera rotation left or right
         if (rotateRight)
         {
             cameraSwivel.transform.localRotation = Quaternion.AngleAxis(-degree / 2, Vector3.up);
@@ -45,6 +46,7 @@ public class SecurityCamera : Security
         }
     }
 
+    // Handles the calculations for rotating the camera swivel back and forth
     private IEnumerator Rotate(float degree, float duration)
     {
         startNextRotation = false;
@@ -53,6 +55,7 @@ public class SecurityCamera : Security
 
         float timer = 0f;
 
+        // Rotates the security camera
         while (timer < duration)
         {
             timer += Time.deltaTime;
@@ -60,8 +63,10 @@ public class SecurityCamera : Security
             yield return null;
         }
 
+        // Pauses security camera for a few seconds before turning back
         yield return new WaitForSeconds(rotateSwitchTime);
 
+        // Reset loop
         startNextRotation = true;
         rotateRight = !rotateRight;
     }

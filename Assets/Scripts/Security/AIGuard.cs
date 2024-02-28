@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// Contributors: Dominic, Adrian
 public class AIGuard : Security
 {
     [HideInInspector] public Transform followPlayer;
@@ -63,11 +64,14 @@ public class AIGuard : Security
         KeepGrounded();
     }
 
+    // Resets walking state
     private void WillWalk()
     {
         willWalk = true;
         agent.isStopped = false;
     }
+
+    // Responsible for object walking towards random direction within NavMesh
     private void Walking()
     {
         if(walkpointSet)
@@ -85,6 +89,7 @@ public class AIGuard : Security
         }
     }
 
+    // Handles calculation for random direction to rwalk to
     private void SearchForDest()
     {
         float z = Random.Range(-walkingRange, walkingRange);
@@ -122,6 +127,8 @@ public class AIGuard : Security
             }
         }
     }
+
+    // Keeps AI object grounded
     private void KeepGrounded()
     {
         RaycastHit hit;
@@ -131,7 +138,7 @@ public class AIGuard : Security
         {
             if (hit.collider != null)
             {
-                Vector3 movePos = transform.position;
+                Vector3 movePos = transform. position;
                 movePos.y = hit.point.y;
                 transform.position = movePos;
             }
