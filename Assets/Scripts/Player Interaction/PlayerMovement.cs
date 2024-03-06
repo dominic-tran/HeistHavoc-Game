@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 // Contributors: Dominic, Nick
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     [Header("Player Movement")]
     [SerializeField] private float playerSpeed; // Set player speed
@@ -43,6 +44,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!IsOwner)
+        {
+            return;
+        }
         if(!isFrozen)
         {
             float x = Input.GetAxis(inputHorizontal);

@@ -61,7 +61,6 @@ public class Guard : Security
     public override void Move()
     {
         {
-            Debug.Log(randomN);
             securityGuard.transform.rotation = angles[randomN];
             temp = angles[randomN];
             angles.RemoveAt(randomN);
