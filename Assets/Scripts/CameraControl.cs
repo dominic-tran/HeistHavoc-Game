@@ -8,30 +8,65 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private float m_DampTime = 0.2f;        
     [SerializeField] private float m_ScreenEdgeBuffer = 4f;   
     [SerializeField] private float m_MinSize = 6.5f;      
-    [SerializeField] private Transform[] m_Targets; // All the targets the camera needs to encompass.
-
-
+    
+    private Transform[] m_Targets; // All the targets the camera needs to encompass.
+    private GameObject[] players;
+    private List<GameObject> m_Players;
     private Camera m_Camera;                        
     private float m_ZoomSpeed;                      
     private Vector3 m_MoveVelocity;                 
-    private Vector3 m_DesiredPosition;              
+    private Vector3 m_DesiredPosition;
+    private bool isFilled;
 
+    private const int MAX_PLAYERS = 2;
 
     private void Awake()
     {
         m_Camera = GetComponentInChildren<Camera>();
+        m_Targets = new Transform[MAX_PLAYERS];
+        players = new GameObject[MAX_PLAYERS];
+        isFilled = false;
     }
 
 
     private void FixedUpdate()
     {
-        // Move the camera towards a desired position.
-        Move();
+        //Constanly check for players joining
+        players = FindPlayers();
 
-        // Change the size of the camera based.
-        Zoom();
+        if (!isFilled && players.Length == MAX_PLAYERS)
+        {
+            isFilled = true;
+            FillTargets();
+        }
+        // else if(!isFilled && m_Players.Count < MAX_PLAYERS) // Once there are 2 players detected
+        // {
+        //     isFilled = true;
+        //     FillTargets();
+        // }
+
+        if (isFilled)
+        {
+            // Move the camera towards a desired position.
+            Move();
+
+            // Change the size of the camera based.
+            Zoom();
+        }
     }
 
+    private GameObject[] FindPlayers()
+    {
+        return GameObject.FindGameObjectsWithTag("Player");
+    }
+
+    private void FillTargets()
+    {
+        for(int i = 0; i < MAX_PLAYERS; ++i)
+        {
+            m_Targets[i] = players[i].transform;
+        }
+    }
 
     private void Move()
     {
