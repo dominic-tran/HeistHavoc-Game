@@ -20,6 +20,7 @@ public class PlayerMovement : NetworkBehaviour
     [SerializeField] private Color playerColor;
     [SerializeField] private Animator animatorPlayer;
 
+    private Transform spawnLoc;
     private Rigidbody rb;
     private Renderer bodyColor;
     private float initialSpeed;
@@ -40,6 +41,10 @@ public class PlayerMovement : NetworkBehaviour
         // Change color of player
         bodyColor = gameObject.transform.GetChild(0).GetComponent<Renderer>();
         bodyColor.material.color = playerColor;
+
+        // Set player position at spawn location
+        spawnLoc = GameObject.Find("playerSpawnLocation").transform;
+        transform.position = spawnLoc.position;
     }
 
     private void Update()
