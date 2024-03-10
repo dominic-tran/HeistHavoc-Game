@@ -11,16 +11,22 @@ public class TestingNetcodeUI : MonoBehaviour
 
     private void Awake()
     {
-        startHostButton.onClick.AddListener(() =>
+        if (startHostButton != null)
+        {
+            startHostButton.onClick.AddListener(() =>
         {
             HHGameMultiplayer.Instance.StartHost();
             Hide();
         });
-        startClientButton.onClick.AddListener(() =>
+        }
+        if (startHostButton != null)
+        {
+            startClientButton.onClick.AddListener(() =>
         {
             HHGameMultiplayer.Instance.StartClient();
             Hide();
         });
+        }
     }
     private void Hide()
     {
