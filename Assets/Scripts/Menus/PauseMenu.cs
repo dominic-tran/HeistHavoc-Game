@@ -14,6 +14,7 @@ public class PauseMenu : NetworkBehaviour
     private Dictionary<ulong, bool> playerPausedDictionary;
     public event EventHandler OnMultiplayerGamePaused;
     public event EventHandler OnMultiplayerGameUnpaused;
+    private bool autoTestGamePausedState; 
     public static PauseMenu Instance { get; private set; }
     private void Start()
     {
@@ -41,6 +42,23 @@ public class PauseMenu : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         isGamePaused.OnValueChanged += IsGamePaused_OnValueChanged;
+        if (IsServer)
+        {
+            NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
+        }
+    }
+
+    private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
+    {
+        autoTestGamePausedState = true; 
+    }
+    private void LateUpdate()
+    {
+        if (autoTestGamePausedState)
+        {
+            autoTestGamePausedState = false;
+            TestGamePausedState();
+        }
     }
 
     private void IsGamePaused_OnValueChanged(bool previousValue, bool newValue)
@@ -98,5 +116,22 @@ public class PauseMenu : NetworkBehaviour
         }
         //all players are unpaused
         isGamePaused.Value = false;
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+        //Time.timeScale = 1f;
+        Debug.Log("Main menu");
+    }
+
+    public void Quit()
+    {
+        Debug.Log("Quit Game");
+        Application.Quit();
+    }
+
+    public void Restart()
+    {
+        GameStateManager.Restart();
     }
 }

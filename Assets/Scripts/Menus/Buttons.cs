@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // Contributors: Jacky, Adrian
-public abstract class Buttons : MonoBehaviour
+public class Buttons : NetworkBehaviour
 {
     public void MainMenu()
     {
