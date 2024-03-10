@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 // Contributors: Dominic
-public abstract class Security : MonoBehaviour
+public abstract class Security : NetworkBehaviour
 {
     private GameObject player;
     private const float CAUGHT_TIME = 2f;
