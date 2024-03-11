@@ -8,6 +8,7 @@ using System;
 // Contributors: Jacky, Adrian
 public class PauseMenu : NetworkBehaviour
 {
+    [SerializeField] private Transform playerPrefab;
     [SerializeField] private GameObject pauseMenu;
     public static bool isLocalGamePaused;
     private NetworkVariable<bool> isGamePaused = new NetworkVariable<bool>(false);
@@ -45,6 +46,16 @@ public class PauseMenu : NetworkBehaviour
         if (IsServer)
         {
             NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
+            NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += SceneManager_OnLoadEventCompleted;
+        }
+    }
+
+    private void SceneManager_OnLoadEventCompleted(string sceneName, LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
+    {
+        foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
+        {
+            Transform playerTransform = Instantiate(playerPrefab);
+            playerTransform.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
         }
     }
 
