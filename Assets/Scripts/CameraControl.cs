@@ -5,6 +5,7 @@ using UnityEngine;
 // Contributors: Dominic, Adrian, Nick, Jacky
 public class CameraControl : MonoBehaviour
 {
+    [SerializeField] private GameObject singleCam;
     [SerializeField] private float m_DampTime = 0.2f;        
     [SerializeField] private float m_ScreenEdgeBuffer = 4f;   
     [SerializeField] private float m_MinSize = 6.5f;      
@@ -22,6 +23,7 @@ public class CameraControl : MonoBehaviour
 
     private void Awake()
     {
+        singleCam.SetActive(false);
         m_Camera = GetComponentInChildren<Camera>();
         m_Targets = new Transform[MAX_PLAYERS];
         players = new GameObject[MAX_PLAYERS];
@@ -39,19 +41,23 @@ public class CameraControl : MonoBehaviour
             isFilled = true;
             FillTargets();
         }
-        // else if(!isFilled && m_Players.Count < MAX_PLAYERS) // Once there are 2 players detected
-        // {
-        //     isFilled = true;
-        //     FillTargets();
-        // }
 
         if (isFilled)
         {
-            // Move the camera towards a desired position.
-            Move();
+            if (players.Length < MAX_PLAYERS)
+            {
+                isFilled = false;
+                gameObject.SetActive(false);
+                singleCam.SetActive(true);
+            }
+            else
+            {
+                // Move the camera towards a desired position.
+                Move();
 
-            // Change the size of the camera based.
-            Zoom();
+                // Change the size of the camera based.
+                Zoom();
+            }
         }
     }
 

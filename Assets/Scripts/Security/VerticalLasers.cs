@@ -19,8 +19,6 @@ public class VerticalLasers : Security
         base.Start();
         initialX = transform.localPosition.x;
         initialZ = transform.localPosition.z;
-
-        Debug.Log(initialX + " " + initialZ);
     }
 
     void Update()
