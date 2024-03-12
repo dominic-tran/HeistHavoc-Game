@@ -49,6 +49,7 @@ public class CameraControl : MonoBehaviour
                 isFilled = false;
                 gameObject.SetActive(false);
                 singleCam.SetActive(true);
+                Time.timeScale = 1f;
             }
             else
             {

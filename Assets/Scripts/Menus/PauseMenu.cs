@@ -98,7 +98,7 @@ public class PauseMenu : NetworkBehaviour
     {
         pauseMenu.SetActive(true);
         PauseGameServerRpc();
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         isLocalGamePaused = true;
     }
 
