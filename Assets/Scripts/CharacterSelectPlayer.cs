@@ -14,6 +14,7 @@ public class CharacterSelectPlayer : MonoBehaviour
         kickButton.onClick.AddListener(() =>
         {
             PlayerData playerData = HHGameMultiplayer.Instance.GetPlayerDataFromPlayerIndex(playerIndex);
+            HeistHavocGameLobby.Instance.KickPlayer(playerData.playerId.ToString());
             HHGameMultiplayer.Instance.KickPlayer(playerData.clientId);
         });
     }

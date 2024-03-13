@@ -39,6 +39,7 @@ public class CharacterSelectReady : NetworkBehaviour
         }
         if (allClientsReady)
         {
+            HeistHavocGameLobby.Instance.DeleteLobby();
             Loader.LoadNetwork(Loader.Scene.NetcodeTestScene);
         }
     }

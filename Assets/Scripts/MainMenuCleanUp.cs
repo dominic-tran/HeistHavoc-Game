@@ -15,5 +15,9 @@ public class MainMenuCleanUp : MonoBehaviour
         {
             Destroy(HHGameMultiplayer.Instance.gameObject);
         }
+        if (HeistHavocGameLobby.Instance != null)
+        {
+            Destroy(HeistHavocGameLobby.Instance.gameObject);
+        }
     }
 }

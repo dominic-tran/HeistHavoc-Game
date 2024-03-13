@@ -15,7 +15,6 @@ public class TestingLobbyUI : MonoBehaviour
             createGameButton.onClick.AddListener(() =>
             {
                 HHGameMultiplayer.Instance.StartHost();
-                Debug.Log("clicked host button");
                 Loader.LoadNetwork(Loader.Scene.CharacterSelectScene);
             });
         }
