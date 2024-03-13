@@ -29,7 +29,7 @@ public class DropOffZone : MonoBehaviour
             // Obtain the collider's Scriptable Object values through a handler
             valuable = other.gameObject.GetComponent<ValuablesHandler>().valuables;
             //Executes Value Increment Animation
-            scoringSystem.IncreaseMoney(valuable.GetValue());
+            scoringSystem.IncreaseMoney(valuable.price);
             //Instantiates a Text Mesh Pro object to display Increment animation
             ShowFloatingText();
             Destroy(other.gameObject);
@@ -42,7 +42,7 @@ public class DropOffZone : MonoBehaviour
     // Pops up the amount of money you just got
     void ShowFloatingText()
     {
-        value = valuable.GetValue();
+        value = valuable.price;
         //Creates a text and grabs the value of the object to display in the text 
         var go = Instantiate(floatingTextPrefab);
         go.GetComponentInChildren<TextMeshProUGUI>().text = "+" + value.ToString();

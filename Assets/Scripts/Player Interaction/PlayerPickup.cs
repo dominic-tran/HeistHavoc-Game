@@ -38,7 +38,7 @@ public class PlayerPickup : MonoBehaviour
                        raycastHit.transform.TryGetComponent(out objectGrabbable))
                     {
                         // Updates weight value on player
-                        player.WeightValue = objectGrabbable.GetComponent<ValuablesHandler>().valuables.GetWeight();
+                        player.WeightValue = objectGrabbable.GetComponent<ValuablesHandler>().valuables.weight;
                         objectGrabbable.gameObject.tag = "Grabbed";
                         objectGrabbable.Grab(objectGrabPointTransform);
                         GetComponentInParent<PlayerMovement>().AnimatorPlayer.SetBool("isHolding", true);

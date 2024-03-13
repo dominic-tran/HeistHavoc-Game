@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 // Contributors: Dominic
 public interface IValuables
@@ -9,4 +10,7 @@ public interface IValuables
     float GetValue();
     float GetWeight();
     GameObject GetPrefab();
+    public NetworkObject GetNetworkObject();
+    public bool HasValuable();
+    public void SetValuableObject(ObjectGrabbable objectGrabbable);
 }

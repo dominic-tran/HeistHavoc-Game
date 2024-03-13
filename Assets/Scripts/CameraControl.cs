@@ -18,46 +18,54 @@ public class CameraControl : MonoBehaviour
     private Vector3 m_MoveVelocity;                 
     private Vector3 m_DesiredPosition;
     private bool isFilled;
+    private float totalTime;
 
     private const int MAX_PLAYERS = 2;
+    private const float LOAD_TIME = 3f;
 
-    private void Awake()
+    private void Start()
     {
         singleCam.SetActive(false);
         m_Camera = GetComponentInChildren<Camera>();
         m_Targets = new Transform[MAX_PLAYERS];
         players = new GameObject[MAX_PLAYERS];
         isFilled = false;
-
-        players = FindPlayers();
     }
 
 
     private void FixedUpdate()
     {
-        if(players.Length < MAX_PLAYERS)
+        if (totalTime >= LOAD_TIME)
         {
-            SwitchToSingleCamera();
-        }
-        else if (!isFilled && players.Length == MAX_PLAYERS)
-        {
-            isFilled = true;
-            FillTargets();
-        }
-        else if (isFilled)
-        {
-            if (players.Length < MAX_PLAYERS)
+            players = FindPlayers();
+            if (!isFilled && players.Length == MAX_PLAYERS)
             {
-                SwitchToSingleCamera();
+                isFilled = true;
+                FillTargets();
+            }
+            else if (isFilled)
+            {
+                if (players.Length < MAX_PLAYERS)
+                {
+                    SwitchToSingleCamera();
+                }
+                else
+                {
+                    // Move the camera towards a desired position.
+                    Move();
+
+                    // Change the size of the camera based.
+                    Zoom();
+                }
             }
             else
             {
-                // Move the camera towards a desired position.
-                Move();
-
-                // Change the size of the camera based.
-                Zoom();
+                SwitchToSingleCamera();
             }
+        }
+        else
+        {
+            totalTime += Time.deltaTime;
         }
     }
 
@@ -68,10 +76,13 @@ public class CameraControl : MonoBehaviour
 
     private void SwitchToSingleCamera()
     {
-        isFilled = false;
-        gameObject.SetActive(false);
-        singleCam.SetActive(true);
-        Time.timeScale = 1f;
+        if (players.Length < MAX_PLAYERS)
+        {
+            isFilled = false;
+            gameObject.SetActive(false);
+            singleCam.SetActive(true);
+            Time.timeScale = 1f;
+        }
     }
 
     private void FillTargets()

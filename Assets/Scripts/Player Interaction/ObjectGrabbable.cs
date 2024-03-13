@@ -1,20 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
+
 
 // Contributors: Dominic, Nick
-public class ObjectGrabbable : MonoBehaviour
+public class ObjectGrabbable : NetworkBehaviour
 {
     [SerializeField] private GameObject valuableObj;
-
     private Rigidbody rb;
     private Transform objectGrabPointTransform;
     private Collider objectCollider;
+    private FollowTransform followTransform;
+    private IValuables valuableParent;
     
     private void Start()
     {
+        followTransform = GetComponent<FollowTransform>();
         rb = GetComponent<Rigidbody>();
         objectCollider = valuableObj.GetComponent<Collider>();
+    }
+
+    public GameObject GetSOValuablesDefinition()
+    {
+        return valuableObj;
+    }
+
+    public void SetValuableParent(IValuables valuableParent)
+    {
+        SetValuableParentServerRpc(valuableParent.GetNetworkObject());
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void SetValuableParentServerRpc(NetworkObjectReference valuableParentNetworkObjectReference)
+    {
+        SetValuableParentClientRpc(valuableParentNetworkObjectReference);
+    }
+
+    [ClientRpc]
+    private void SetValuableParentClientRpc(NetworkObjectReference valuableParentNetworkObjectReference)
+    {
+        valuableParentNetworkObjectReference.TryGet(out NetworkObject valuableParentNetworkObject);
+        IValuables valuableParent = valuableParentNetworkObject.GetComponent<IValuables>();
+
+        if (this.valuableParent != null)
+        {
+            this.valuableParent = null;
+        }
+
+        this.valuableParent = valuableParent;
+
+        if (valuableParent.HasValuable())
+        {
+            Debug.LogError("IValuables already has a valuableObject!");
+        }
+
+        valuableParent.SetValuableObject(this);
+
+        //followTransform.SetTargetTransform(valuableParent.Get)
+
     }
 
     // Grab() function that moves current object with the player's hands
@@ -41,8 +85,8 @@ public class ObjectGrabbable : MonoBehaviour
     {
         if(objectGrabPointTransform != null)
         {
-            rb.MovePosition(objectGrabPointTransform.position);
-            rb.transform.forward = objectGrabPointTransform.forward;
+            transform.position = objectGrabPointTransform.position;
+            transform.forward = objectGrabPointTransform.forward;
         }
     }
 }
