@@ -28,28 +28,27 @@ public class CameraControl : MonoBehaviour
         m_Targets = new Transform[MAX_PLAYERS];
         players = new GameObject[MAX_PLAYERS];
         isFilled = false;
+
+        players = FindPlayers();
     }
 
 
     private void FixedUpdate()
     {
-        //Constanly check for players joining
-        players = FindPlayers();
-
-        if (!isFilled && players.Length == MAX_PLAYERS)
+        if(players.Length < MAX_PLAYERS)
+        {
+            SwitchToSingleCamera();
+        }
+        else if (!isFilled && players.Length == MAX_PLAYERS)
         {
             isFilled = true;
             FillTargets();
         }
-
-        if (isFilled)
+        else if (isFilled)
         {
             if (players.Length < MAX_PLAYERS)
             {
-                isFilled = false;
-                gameObject.SetActive(false);
-                singleCam.SetActive(true);
-                Time.timeScale = 1f;
+                SwitchToSingleCamera();
             }
             else
             {
@@ -65,6 +64,14 @@ public class CameraControl : MonoBehaviour
     private GameObject[] FindPlayers()
     {
         return GameObject.FindGameObjectsWithTag("Player");
+    }
+
+    private void SwitchToSingleCamera()
+    {
+        isFilled = false;
+        gameObject.SetActive(false);
+        singleCam.SetActive(true);
+        Time.timeScale = 1f;
     }
 
     private void FillTargets()
