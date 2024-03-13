@@ -46,8 +46,8 @@ Library: C:\Users\nickl\Desktop\group8-GDIM32\Temp\BurstOutput\Data\Plugins\x86_
 --assembly-defines=Unity.Multiplayer.Tools.NetStats;
 --assembly-defines=QFSW.QC.Grammar;
 --assembly-defines=Unity.Netcode.Runtime;
---assembly-defines=Unity.Multiplayer.Samples.Utilities.RNSM;
 --assembly-defines=unity-websocket-sharp;
+--assembly-defines=Unity.Multiplayer.Samples.Utilities.RNSM;
 --assembly-defines=Unity.Multiplayer.Tools.MetricTestData;
 --assembly-defines=Unity.Multiplayer.Samples.Utilities;
 --assembly-defines=Unity.Services.Core.Analytics;
@@ -77,12 +77,12 @@ Library: C:\Users\nickl\Desktop\group8-GDIM32\Temp\BurstOutput\Data\Plugins\x86_
 --assembly-defines=Unity.Multiplayer.Tools.NetStatsReporting;
 --assembly-defines=QFSW.QC.Demo;
 --assembly-defines=Unity.Multiplayer.Tools.MetricEvents;
+--assembly-defines=websocket-sharp;
 --assembly-defines=Unity.Collections.LowLevel.ILSupport;
 --assembly-defines=mcs;
 --assembly-defines=Unity.VisualScripting.Antlr3.Runtime;
 --assembly-defines=Unity.Burst.Unsafe;
 --assembly-defines=Newtonsoft.Json;
---assembly-defines=websocket-sharp;
 --assembly-defines=System.Runtime;
 --assembly-defines=netstandard;
 --assembly-defines=Mono.Security;
@@ -241,8 +241,8 @@ Library: C:\Users\nickl\Desktop\group8-GDIM32\Temp\BurstOutput\Data\Plugins\x86_
 --assembly-defines=Unity.Multiplayer.Tools.NetStats;
 --assembly-defines=QFSW.QC.Grammar;
 --assembly-defines=Unity.Netcode.Runtime;
---assembly-defines=Unity.Multiplayer.Samples.Utilities.RNSM;
 --assembly-defines=unity-websocket-sharp;
+--assembly-defines=Unity.Multiplayer.Samples.Utilities.RNSM;
 --assembly-defines=Unity.Multiplayer.Tools.MetricTestData;
 --assembly-defines=Unity.Multiplayer.Samples.Utilities;
 --assembly-defines=Unity.Services.Core.Analytics;
@@ -272,12 +272,12 @@ Library: C:\Users\nickl\Desktop\group8-GDIM32\Temp\BurstOutput\Data\Plugins\x86_
 --assembly-defines=Unity.Multiplayer.Tools.NetStatsReporting;
 --assembly-defines=QFSW.QC.Demo;
 --assembly-defines=Unity.Multiplayer.Tools.MetricEvents;
+--assembly-defines=websocket-sharp;
 --assembly-defines=Unity.Collections.LowLevel.ILSupport;
 --assembly-defines=mcs;
 --assembly-defines=Unity.VisualScripting.Antlr3.Runtime;
 --assembly-defines=Unity.Burst.Unsafe;
 --assembly-defines=Newtonsoft.Json;
---assembly-defines=websocket-sharp;
 --assembly-defines=System.Runtime;
 --assembly-defines=netstandard;
 --assembly-defines=Mono.Security;

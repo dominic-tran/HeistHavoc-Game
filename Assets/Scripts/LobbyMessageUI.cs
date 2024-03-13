@@ -82,5 +82,10 @@ public class LobbyMessageUI : MonoBehaviour
     private void OnDestroy()
     {
         HHGameMultiplayer.Instance.OnFailedToJoinGame -= HHGameMultiplayer_OnFailedToJoinGame;
+        HeistHavocGameLobby.Instance.OnCreateLobbyStarted -= HeistHavocGameLobby_OnCreateLobbyStarted;
+        HeistHavocGameLobby.Instance.OnCreateLobbyFailed -= HeistHavocGameLobby_OnCreateLobbyFailed;
+        HeistHavocGameLobby.Instance.OnJoinStarted -= HeistHavocGameLobby_OnJoinStarted;
+        HeistHavocGameLobby.Instance.OnJoinFailed -= HeistHavocGameLobby_OnJoinFailed;
+        HeistHavocGameLobby.Instance.OnQuickJoinFailed -= HeistHavocGameLobby_OnJQuickoinFailed;
     }
 }

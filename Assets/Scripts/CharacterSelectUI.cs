@@ -7,15 +7,19 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using Unity.Services.Lobbies.Models;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class CharacterSelectUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI lobbyNameText;
     [SerializeField] private TextMeshProUGUI lobbyCodeText;
+    
+
     public void MainMenu()
     {
         if (NetworkManager.Singleton != null)
         {
+            HeistHavocGameLobby.Instance.LeaveLobby();
             NetworkManager.Singleton.Shutdown();
             SceneManager.LoadScene("MainMenu");
         }
@@ -32,15 +36,10 @@ public class CharacterSelectUI : MonoBehaviour
     {
         Lobby lobby = HeistHavocGameLobby.Instance.GetLobby();
 
-        if (lobby.Name == "ENTER LOBBY NAME")
-        {
-            lobbyNameText.text = "Lobby Name: Lobby " + Random.Range(0,100);
-        }
-        else
-        {
-            lobbyNameText.text = "Lobby Name: " + lobby.Name;
-        }
-        
+        lobbyNameText.text = "Lobby Name: " + lobby.Name;
+
         lobbyCodeText.text = "Lobby Code: " + lobby.LobbyCode;
     }
+    
+    
 }
