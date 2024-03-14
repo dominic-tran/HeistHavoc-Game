@@ -6,6 +6,7 @@ using System;
 using UnityEngine.SceneManagement;
 using Unity.Services.Authentication;
 
+// Contributors: Adrian, Dominic, Jacky, Adrian
 public class HHGameMultiplayer : NetworkBehaviour
 {
 

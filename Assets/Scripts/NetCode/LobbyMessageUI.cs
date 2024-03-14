@@ -7,6 +7,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Contributors: Adrian
 public class LobbyMessageUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI messageText;

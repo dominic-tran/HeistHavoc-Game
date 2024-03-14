@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contributors: Adrian, Jacky
 public class FollowTransform : MonoBehaviour
 {
     private Transform targetTransform;

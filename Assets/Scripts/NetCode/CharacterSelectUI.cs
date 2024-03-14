@@ -9,6 +9,7 @@ using TMPro;
 using Unity.Services.Lobbies.Models;
 using static Cinemachine.DocumentationSortingAttribute;
 
+// Contributors: Adrian, Jacky
 public class CharacterSelectUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI lobbyNameText;

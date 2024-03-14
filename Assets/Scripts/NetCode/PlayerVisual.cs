@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contributors: Adrian
 public class PlayerVisual : MonoBehaviour
 {
     private Renderer myRenderer;

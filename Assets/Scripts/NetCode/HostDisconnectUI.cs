@@ -5,6 +5,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Contributors: Nick
 public class HostDisconnectUI : MonoBehaviour
 {
     [SerializeField] private Button MainMenu;

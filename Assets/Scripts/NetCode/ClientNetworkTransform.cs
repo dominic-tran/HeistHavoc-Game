@@ -1,6 +1,7 @@
 using Unity.Netcode.Components;
 using UnityEngine;
 
+// Contributors: Jacky
 namespace Unity.Multiplayer.Samples.Utilities.ClientAuthority
 {
     /// <summary>

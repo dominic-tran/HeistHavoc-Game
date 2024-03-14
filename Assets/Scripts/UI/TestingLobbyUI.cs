@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Contributors: Nick
 public class TestingLobbyUI : MonoBehaviour
 {
     [SerializeField] private Button createGameButton;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
+// Contributors: Nick
 public class AutoAddPlayerToVcamTargets : MonoBehaviour
 {
     [TagField, SerializeField] private string Tag = string.Empty;

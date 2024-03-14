@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Contributors: Jacky
 public class ItemUIButtons : MonoBehaviour
 {
     [SerializeField] private SOValuablesDefinition buttonData;

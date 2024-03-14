@@ -5,6 +5,7 @@ using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
+// Contributors: Dominic
 public struct PlayerData : IEquatable<PlayerData>, INetworkSerializable
 {
     public ulong clientId;

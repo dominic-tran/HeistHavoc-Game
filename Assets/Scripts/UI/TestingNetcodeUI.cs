@@ -4,6 +4,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Contributors: Nick
 public class TestingNetcodeUI : MonoBehaviour
 {
     [SerializeField] private Button startHostButton;

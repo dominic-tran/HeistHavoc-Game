@@ -15,6 +15,7 @@ using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
 
+// Contributors: Adrian, Dominic, Jacky, Nick
 public class HeistHavocGameLobby : MonoBehaviour
 {
     private Lobby joinedLobby;

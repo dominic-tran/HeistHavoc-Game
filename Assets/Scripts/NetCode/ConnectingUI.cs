@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contributors: Adrian
 public class ConnectingUI : MonoBehaviour
 {
     private void Start()

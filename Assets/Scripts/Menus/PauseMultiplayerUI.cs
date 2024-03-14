@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Contributors: Nick, Adrian
 public class PauseMultiplayerUI : MonoBehaviour
 {
     private void Start()

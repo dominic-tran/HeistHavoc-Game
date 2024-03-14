@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Contributors: Jacky
 public class TestingCharacterSelectUI : MonoBehaviour
 {
     [SerializeField] private Button readyButton;

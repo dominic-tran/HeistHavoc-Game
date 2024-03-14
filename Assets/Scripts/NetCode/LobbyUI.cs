@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// Contributors: Adrian, Jacky
 public class LobbyUI : MonoBehaviour
 {
     [SerializeField] private Button mainMenuButton;

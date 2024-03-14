@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Contributors: Nick, Jacky
 public class LobbyCreateUI : MonoBehaviour
 {
     [SerializeField] private Button closeButton;

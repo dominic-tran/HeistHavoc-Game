@@ -3,6 +3,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Contributors: Nick, Dominic
 public class CharacterSelectPlayer : MonoBehaviour
 {
     [SerializeField] private int playerIndex;

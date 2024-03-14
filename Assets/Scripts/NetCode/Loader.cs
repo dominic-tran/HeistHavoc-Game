@@ -4,6 +4,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Contributors: Dominic
 public static class Loader
 {
     public enum Scene
