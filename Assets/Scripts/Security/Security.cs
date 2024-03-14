@@ -20,7 +20,14 @@ public abstract class Security : NetworkBehaviour
         {
             player = collision.gameObject;
             collision.enabled = false;
-            collision.GetComponent<PlayerMovement>().isFrozen = true;
+            if (collision.GetComponent<PlayerMovement>() != null)
+            {
+                collision.GetComponent<PlayerMovement>().isFrozen = true;
+            }
+            else
+            {
+                collision.GetComponent<SinglePlayerMovement>().isFrozen = true;
+            }
             Invoke("Respawn", CAUGHT_TIME);
         }
     }
@@ -30,7 +37,14 @@ public abstract class Security : NetworkBehaviour
         Transform spawnLoc = GameObject.Find("playerSpawnLocation").transform;
 
         player.GetComponent<Collider>().enabled = true;
-        player.GetComponent<PlayerMovement>().isFrozen = false;
+        if (player.GetComponent<PlayerMovement>() != null)
+        {
+            player.GetComponent<PlayerMovement>().isFrozen = false;
+        }
+        else
+        {
+            player.GetComponent<SinglePlayerMovement>().isFrozen = false;
+        }
         player.transform.position = spawnLoc.position;
     }
 
