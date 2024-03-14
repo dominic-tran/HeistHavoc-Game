@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickUpDistance: 3
-  objectGrabPointTransform: {fileID: 3137506316739590121}
+  objectGrabPointTransform: {fileID: 4064901356397507714}
   inputPickup: e
 --- !u!1001 &3794291408452356563
 PrefabInstance:

@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerPickup : MonoBehaviour
 {
     [SerializeField] private float pickUpDistance;
-    [SerializeField] private Transform objectGrabPointTransform;
+    [SerializeField] private GameObject objectGrabPointTransform;
     [SerializeField] private string inputPickup;
 
     private ObjectGrabbable objectGrabbable;
@@ -40,7 +40,7 @@ public class PlayerPickup : MonoBehaviour
                         // Updates weight value on player
                         player.WeightValue = objectGrabbable.GetComponent<ValuablesHandler>().valuables.weight;
                         objectGrabbable.gameObject.tag = "Grabbed";
-                        objectGrabbable.Grab(objectGrabPointTransform);
+                        objectGrabbable.GrabServerRpc(objectGrabPointTransform);
                         GetComponentInParent<PlayerMovement>().AnimatorPlayer.SetBool("isHolding", true);
                     }
                 }
@@ -56,7 +56,7 @@ public class PlayerPickup : MonoBehaviour
     {
         player.WeightValue = 0;
         objectGrabbable.gameObject.tag = "Grabbable";
-        objectGrabbable.Drop();
+        objectGrabbable.DropServerRpc();
         GetComponentInParent<PlayerMovement>().AnimatorPlayer.SetBool("isHolding", false);
         objectGrabbable = null;
     }

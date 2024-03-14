@@ -13,6 +13,8 @@ public class ObjectGrabbable : NetworkBehaviour
     private Collider objectCollider;
     private FollowTransform followTransform;
     private IValuables valuableParent;
+
+    private const float OFFSET = 2.5f;
     
     private void Start()
     {
@@ -64,28 +66,48 @@ public class ObjectGrabbable : NetworkBehaviour
     // Grab() function that moves current object with the player's hands
     // Sets gravity to false to prevent jittering
     // Sets trigger to true to prevent collision while moving
-    public void Grab(Transform objectGrabPointTransform)
+    [ServerRpc(RequireOwnership = false)]
+    public void GrabServerRpc(NetworkObjectReference objectGrabPointTransformReference)
     {
-        this.objectGrabPointTransform = objectGrabPointTransform;
-        objectCollider.isTrigger = true;
-        rb.useGravity = false;
+        GrabClientRpc(objectGrabPointTransformReference);
+    }
+
+    [ClientRpc]
+    public void GrabClientRpc(NetworkObjectReference objectGrabPointTransformReference)
+    {
+        if (objectGrabPointTransformReference.TryGet(out NetworkObject objectGrabPointTransform))
+        {
+            this.objectGrabPointTransform = objectGrabPointTransform.transform;
+            objectCollider.isTrigger = true;
+            rb.useGravity = false;
+        }
     }
 
     // Drop() function that moves current object with the player's hands
     // Sets gravity to true to allow object to fall down
     // Sets trigger to false to allow collision when it falls and lands
-    public void Drop()
+    [ServerRpc(RequireOwnership = false)]
+    public void DropServerRpc()
+    {
+        DropClientRpc();
+    }
+
+    [ClientRpc]
+    public void DropClientRpc()
     {
         this.objectGrabPointTransform = null;
         objectCollider.isTrigger = false;
         rb.useGravity = true;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if(objectGrabPointTransform != null)
         {
-            transform.position = objectGrabPointTransform.position;
+            Vector3 newTransform = objectGrabPointTransform.position + objectGrabPointTransform.forward * OFFSET;
+            newTransform.y += OFFSET;
+
+            transform.position = newTransform;
             transform.forward = objectGrabPointTransform.forward;
         }
     }

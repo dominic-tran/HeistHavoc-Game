@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.Netcode;
 
 // Contributors: Nick, Dominic, Adrian, Jacky
-public class DropOffZone : MonoBehaviour
+public class DropOffZone : NetworkBehaviour
 {
     private ScoringSystem scoringSystem;
     private SOValuablesDefinition valuable;
@@ -32,12 +33,28 @@ public class DropOffZone : MonoBehaviour
             scoringSystem.IncreaseMoney(valuable.price);
             //Instantiates a Text Mesh Pro object to display Increment animation
             ShowFloatingText();
-            Destroy(other.gameObject);
+            DestroyValuableServerRpc(other.gameObject);
             //Drop off SFX
             collectSound.Play();
             
         }
     }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void DestroyValuableServerRpc(NetworkObjectReference valuableReference)
+    {
+        DestroyValuableClientRpc(valuableReference);
+    }
+
+    [ClientRpc]
+    public void DestroyValuableClientRpc(NetworkObjectReference valuableReference)
+    {
+        if (valuableReference.TryGet(out NetworkObject valuable))
+        {
+            Destroy(valuable.gameObject);
+        }
+    }
+
 
     // Pops up the amount of money you just got
     void ShowFloatingText()
