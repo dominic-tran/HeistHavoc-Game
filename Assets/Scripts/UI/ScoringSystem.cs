@@ -10,7 +10,11 @@ public class ScoringSystem : NetworkBehaviour, IScoreObserver
 {
     
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI goalText;
     [SerializeField] private float smoothIncreaseDuration = 0.5f;
+    [SerializeField] private float gameDuration = 60f;
+    [SerializeField] private float goalAmount = 45f;
 
     //private float currentMoney;
 
@@ -76,11 +80,35 @@ public class ScoringSystem : NetworkBehaviour, IScoreObserver
     }*/
 
     private NetworkVariable<float> currentMoney = new NetworkVariable<float>(0f);
+    private float timer;
 
     private void Start()
     {
+        goalText.text = "Goal: $" + goalAmount.ToString();
+        timer = gameDuration;
+        StartCoroutine(UpdateTimer());
         currentMoney.OnValueChanged += CurrentMoneyChanged;
         AddToScore();
+    }
+
+    private IEnumerator UpdateTimer()
+    {
+        while (timer >= 1)
+        {
+            timer -= Time.deltaTime;
+            UpdateUITimer();
+            yield return null;
+        }
+
+        GameStateManager.GameOver();
+    }
+
+    private void UpdateUITimer()
+    {
+        int minutes = Mathf.FloorToInt(timer / 60);
+        int seconds = Mathf.FloorToInt(timer % 60);
+
+        timerText.text = "Timer: " + string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
     private void CurrentMoneyChanged(float oldValue, float newValue)
@@ -124,12 +152,13 @@ public class ScoringSystem : NetworkBehaviour, IScoreObserver
     {
         int roundedMoneyValue = (int)Mathf.Round(currentMoney.Value);
         scoreText.text = "Value Stolen: $" + roundedMoneyValue.ToString("#");
+        
     }
 
     // Check win condition and call GameStateManager.Win() if necessary
     private void CheckWinCondition()
     {
-        if (currentMoney.Value >= 45)
+        if (currentMoney.Value >= goalAmount)
         {
             GameStateManager.Win();
         }

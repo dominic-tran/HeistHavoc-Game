@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameStateManager : MonoBehaviour
 {
     [SerializeField] private GameObject winMenu;
+    [SerializeField] private GameObject loseMenu;
     private static GameStateManager _instance;
 
 
@@ -35,6 +36,13 @@ public class GameStateManager : MonoBehaviour
         GameObject winMenu = GameObject.Find("WinCanvas").transform.GetChild(0).gameObject;
         Time.timeScale = 0f;
         winMenu.SetActive(true);
+    }
+
+    public static void GameOver()
+    {
+        GameObject loseMenu = GameObject.Find("LoseCanvas").transform.GetChild(0).gameObject;
+        Time.timeScale = 0f;
+        loseMenu.SetActive(true);
     }
 
     public static void Restart()
