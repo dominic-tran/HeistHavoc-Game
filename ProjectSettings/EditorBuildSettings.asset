@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScenes/NetcodeTestScene.unity
     guid: 34f181dd335f26e43b64ccb5295a1bd4
+  - enabled: 1
+    path: Assets/Scenes/MainScenes/ControlMenu.unity
+    guid: 81cfca9e05f624540a3e6ba2aa3ca87a
   m_configObjects: {}
